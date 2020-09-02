@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace Peer {
     public partial class Form1 : Form {
+
         public Form1() {
             InitializeComponent();
             this.openFileDialog1.FileName = "";
@@ -31,7 +27,7 @@ namespace Peer {
                     MessageBox.Show("The selected file could not be opened.", "Failed to open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                
+
                 Console.WriteLine("Length: " + file.Length);
                 if (file.Length > 1000 * 1000 * 1000) {
                     Console.WriteLine("Confirming file open for large file (1GB+)");
@@ -63,10 +59,13 @@ namespace Peer {
         // When the selection changes, update the displayed item
         private void listDetections_SelectedIndexChanged(object sender, EventArgs e) {
             int idx = this.listDetections.SelectedIndex;
-            if (idx == -1) return;
+            if (idx == -1) {
+                this.pictureBox.Image = pictureBox.Image = global::Peer.Properties.Resources.eye;
+                return;
+            };
 
             // Get where in the file the item is
-            (long, long) indices = ((List<(long, long)>)listDetections.Tag)[idx];
+            (long, long, string) indices = ((List<(long, long, string)>)listDetections.Tag)[idx];
             // Open the file, skip to where our item is
             Stream file = openFileDialog1.OpenFile();
             file.Seek(indices.Item1, SeekOrigin.Begin);
@@ -75,30 +74,30 @@ namespace Peer {
             byte[] buffer = new byte[indices.Item2 - indices.Item1];
             file.Read(buffer, 0, buffer.Length);
             Stream stream = new MemoryStream(buffer);
-            Image img;
+
             try {
-                 img = Image.FromStream(stream);
+                Image img = Image.FromStream(stream);
+
+                // We want the image centered, but if it is bigger than the image box, it will be cropped off
+                // To fix that, we downscale images that are too large such that they fit, but leave other images unscaled
+                int w = pictureBox.Width;
+                int h = pictureBox.Height;
+                if (img.Width > w || img.Height > h) {
+                    int newH = (int)Math.Ceiling((double)w / img.Width * img.Height);
+                    if (newH > h) {
+                        int newW = (int)Math.Ceiling((double)h / img.Height * img.Width);
+                        img = ResizeImage(img, newW, h);
+                    } else {
+                        img = ResizeImage(img, w, newH);
+                    }
+                }
+
+                this.pictureBox.Image = img;
             } catch {
-                pictureBox.Image = global::Peer.Properties.Resources.eye;
+                pictureBox.Image = global::Peer.Properties.Resources.no_image;
                 return;
             }
-            
 
-            // We want the image centered, but if it is bigger than the image box, it will be cropped off
-            // To fix that, we downscale images that are too large such that they fit, but leave other images unscaled
-            int w = pictureBox.Width;
-            int h = pictureBox.Height;
-            if(img.Width > w || img.Height > h) {
-                int newH = (int)Math.Ceiling((double)w / img.Width * img.Height);
-                if(newH > h) {
-                    int newW = (int)Math.Ceiling((double)h / img.Height * img.Width);
-                    img = ResizeImage(img, newW, h);
-                } else {
-                    img = ResizeImage(img, w, newH);
-                }
-            }
-
-            this.pictureBox.Image = img;
         }
 
         public static Bitmap ResizeImage(Image image, int width, int height) {
@@ -125,14 +124,36 @@ namespace Peer {
 
         // Doubleclicking writes the image to a temporary file and opens it
         private void picture_doubleclick(object sender, EventArgs e) {
-            if (pictureBox.Image == null || listDetections.SelectedIndex == -1 ) return;
-            String path = System.IO.Path.GetTempPath() + "peer.png";
-            FileStream outfile = System.IO.File.Open(path, FileMode.Create, FileAccess.Write);
-
-            // Load the current image in a non-resized version
             int idx = this.listDetections.SelectedIndex;
+            if (pictureBox.Image == null || idx == -1) return;
+
+            // Create a temp file named "peer" + n + ext
+            // 'n' is a digit from 0 to 10, 'ext' is the appropriate file extension
+            // It first tries to create peer0, if that fails, it tries peer1, etc. up to peer9
+            // Typically if you just opened it, the program may lock it (since it has the file open)
+            // This should fix most cases where that happens
+            FileStream outfile = null;
+            String path = null;
+            for (int i = 0; i < 10; i++) {
+                path = System.IO.Path.GetTempPath() + "peer" + i + ((List<(long, long, string)>)listDetections.Tag)[idx].Item3;
+                try {
+                    outfile = System.IO.File.Open(path, FileMode.Create, FileAccess.Write);
+                    break;
+                } catch (Exception err) {
+                    //Console.WriteLine("Failed to open temporary file ({0})", err);
+                    continue;
+                }
+            }
+            if (outfile == null || path == null) {
+                Console.WriteLine("Failed to open ALL temporary files");
+                return;
+            }
+
+ 
+            
+
             // Get where in the file the item is
-            (long, long) indices = ((List<(long, long)>)listDetections.Tag)[idx];
+            (long, long, string) indices = ((List<(long, long, string)>)listDetections.Tag)[idx];
             // Open the file, skip to where our item is
             Stream file = openFileDialog1.OpenFile();
             file.Seek(indices.Item1, SeekOrigin.Begin);
@@ -147,5 +168,6 @@ namespace Peer {
             outfile.Dispose();
             System.Diagnostics.Process.Start("file:///" + path);
         }
+
     }
 }

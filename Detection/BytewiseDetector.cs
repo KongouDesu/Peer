@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Peer {
     interface BytewiseDetector {
@@ -27,6 +24,11 @@ namespace Peer {
         /// Get the human-readable name for what this detector detects, e.g. "PNG" or "WAV"
         /// </summary>
         /// <returns>Identifying name</returns>
-        String DisplayName();
+        string DisplayName { get; }
+
+        /// <summary>
+        /// Get the standard file extension for this detector, e.g. ".png" or ".wav"
+        /// </summary>
+        string Extension { get; }
     }
 }

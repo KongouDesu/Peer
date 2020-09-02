@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Peer.Detection {
     /// <summary>
@@ -11,6 +9,9 @@ namespace Peer.Detection {
     /// To detect the end of the image, it looks for the IEND chunk
     /// </summary>
     class PNGDetector : BytewiseDetector {
+
+        public string DisplayName => "PNG";
+        public string Extension => ".png";
 
         private List<(long, long)> detections = new List<(long, long)>();
         // Temporary list, tracking sequences that _might_ be a JPG when we get more bytes
@@ -42,11 +43,11 @@ namespace Peer.Detection {
         public static readonly byte[] MagicEnd = { 0, 0, 0, 0, 0x49, 0x45, 0x4E, 0x44, 0xAE, 0x42, 0x60, 0x82 };
 
         public PNGDetector() {
-            
+
         }
 
         public List<(long, long)> Detections() {
-            return this.detections;
+            return this.detections.ToList();
         }
 
         public void Process(byte b) {
@@ -55,7 +56,7 @@ namespace Peer.Detection {
                 potentialPNGs.Add(new PotentialPNG(this.currentIdx));
             }
             // Update all potential detections with the new byte
-            for(int i = potentialPNGs.Count-1; i >= 0; i--) { 
+            for (int i = potentialPNGs.Count - 1; i >= 0; i--) {
                 if (!potentialPNGs[i].Process(b))
                     potentialPNGs.RemoveAt(i);
             }
@@ -79,10 +80,6 @@ namespace Peer.Detection {
             Console.WriteLine("PNGDetector reset with  {0} potentials remaining", potentialPNGs.Count);
             this.currentIdx = 0;
             potentialPNGs = new List<PotentialPNG>();
-        }
-
-        public string DisplayName() {
-            return "PNG";
         }
     }
 

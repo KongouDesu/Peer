@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Peer.Detection {
     /// <summary>
@@ -12,6 +10,9 @@ namespace Peer.Detection {
     /// Note that since a 'length' concept is included, we can determine the start and end from the header
     /// </summary>
     class WAVDetector : BytewiseDetector {
+
+        public string DisplayName => "WAV";
+        public string Extension => ".wav";
 
         private List<(long, long)> detections = new List<(long, long)>();
         // Temporary list, tracking sequences that _might_ be a WAV when we get more bytes
@@ -23,11 +24,11 @@ namespace Peer.Detection {
         public static readonly byte[] MagicWAVEfmt = { 0x57, 0x41, 0x56, 0x45, 0x66, 0x6D, 0x74 };
 
         public WAVDetector() {
-            
+
         }
 
         public List<(long, long)> Detections() {
-            return this.detections;
+            return this.detections.ToList();
         }
 
         public void Process(byte b) {
@@ -36,7 +37,7 @@ namespace Peer.Detection {
                 potentialWAVs.Add(new PotentialWAV(this.currentIdx));
             }
             // Update all potential detections with the new byte
-            for(int i = potentialWAVs.Count-1; i >= 0; i--) { 
+            for (int i = potentialWAVs.Count - 1; i >= 0; i--) {
                 if (!potentialWAVs[i].Process(b))
                     potentialWAVs.RemoveAt(i);
             }
@@ -59,10 +60,6 @@ namespace Peer.Detection {
             Console.WriteLine("WAVDetector reset with  {0} potentials remaining", potentialWAVs.Count);
             this.currentIdx = 0;
             potentialWAVs = new List<PotentialWAV>();
-        }
-
-        public string DisplayName() {
-            return "WAV";
         }
     }
 
@@ -87,23 +84,21 @@ namespace Peer.Detection {
                     magicProgress++;
                     return true;
                 }
-            // Read length bytes
-            } else if (magicProgress < WAVDetector.MagicRIFF.Length+4) {
-                Console.WriteLine(magicProgress);
-                Console.WriteLine(WAVDetector.MagicRIFF.Length+4);
+                // Read length bytes
+            } else if (magicProgress < WAVDetector.MagicRIFF.Length + 4) {
                 int mp = magicProgress - WAVDetector.MagicRIFF.Length;
                 lenBuffer[mp] = b;
                 magicProgress++;
                 return true;
-            // Verify length is followed by 'WAVEfmt' 
-            } else if (magicProgress < WAVDetector.MagicRIFF.Length+4+WAVDetector.MagicWAVEfmt.Length) {
+                // Verify length is followed by 'WAVEfmt' 
+            } else if (magicProgress < WAVDetector.MagicRIFF.Length + 4 + WAVDetector.MagicWAVEfmt.Length) {
                 int mp = magicProgress - WAVDetector.MagicRIFF.Length - 4;
-                if ( b == WAVDetector.MagicWAVEfmt[mp]) {
-                    if (mp == WAVDetector.MagicWAVEfmt.Length-1) {
+                if (b == WAVDetector.MagicWAVEfmt[mp]) {
+                    if (mp == WAVDetector.MagicWAVEfmt.Length - 1) {
                         done = true;
                         if (!BitConverter.IsLittleEndian)
                             Array.Reverse(lenBuffer);
-                        endIndex = detectedStartIdx + BitConverter.ToInt32(lenBuffer,0);
+                        endIndex = detectedStartIdx + BitConverter.ToInt32(lenBuffer, 0) + 8; // Add 8 (4 for 'RIFF', 4 for the length bytes)
                     }
                     magicProgress++;
                     return true;

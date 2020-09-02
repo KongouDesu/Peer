@@ -45,11 +45,19 @@
             this.listDetections = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.pNGDetectorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.audioTimeTotal = new System.Windows.Forms.TextBox();
+            this.audioTimeElapsed = new System.Windows.Forms.TextBox();
+            this.audioButton = new System.Windows.Forms.Button();
+            this.audioText = new System.Windows.Forms.TextBox();
+            this.pBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PNGDetectorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pNGDetectorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PNGDetectorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -171,9 +179,37 @@
             this.pictureBox.WaitOnLoad = true;
             this.pictureBox.DoubleClick += new System.EventHandler(this.picture_doubleclick);
             // 
+            // audioTimeTotal
+            // 
+            this.audioTimeTotal.Location = new System.Drawing.Point(0, 0);
+            this.audioTimeTotal.Name = "audioTimeTotal";
+            this.audioTimeTotal.Size = new System.Drawing.Size(100, 20);
+            this.audioTimeTotal.TabIndex = 0;
+            // 
+            // audioTimeElapsed
+            // 
+            this.audioTimeElapsed.Location = new System.Drawing.Point(0, 0);
+            this.audioTimeElapsed.Name = "audioTimeElapsed";
+            this.audioTimeElapsed.Size = new System.Drawing.Size(100, 20);
+            this.audioTimeElapsed.TabIndex = 0;
+            // 
+            // audioButton
+            // 
+            this.audioButton.Location = new System.Drawing.Point(0, 0);
+            this.audioButton.Name = "audioButton";
+            this.audioButton.Size = new System.Drawing.Size(75, 23);
+            this.audioButton.TabIndex = 0;
+            // 
+            // audioText
+            // 
+            this.audioText.Location = new System.Drawing.Point(0, 0);
+            this.audioText.Name = "audioText";
+            this.audioText.Size = new System.Drawing.Size(100, 20);
+            this.audioText.TabIndex = 0;
+            // 
             // pNGDetectorBindingSource
             // 
-            this.pNGDetectorBindingSource.DataSource = typeof(Peer.Detection.PNGDetector);
+            this.PNGDetectorBindingSource.DataSource = typeof(Peer.Detection.PNGDetector);
             // 
             // Form1
             // 
@@ -194,10 +230,16 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pNGDetectorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PNGDetectorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void AudioBox_Click(object sender, System.EventArgs e) {
+            throw new System.NotImplementedException();
         }
 
         #endregion
@@ -213,11 +255,17 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.ToolStripProgressBar statusProgressBar;
-        private System.Windows.Forms.BindingSource pNGDetectorBindingSource;
+        private System.Windows.Forms.BindingSource PNGDetectorBindingSource;
         public System.Windows.Forms.ListBox listDetections;
         public System.Windows.Forms.PictureBox pictureBox;
         public System.Windows.Forms.ToolStripMenuItem menuFileOpen;
         public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox audioText;
+        private System.Windows.Forms.Button audioButton;
+        private System.Windows.Forms.BindingSource form1BindingSource;
+        private System.Windows.Forms.BindingSource pBBindingSource;
+        public System.Windows.Forms.TextBox audioTimeTotal;
+        public System.Windows.Forms.TextBox audioTimeElapsed;
     }
 }
 

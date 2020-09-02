@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Peer.Detection {
     /// <summary>
     /// A Detector that looks for JPG images
     /// </summary>
     class JPGDetector : BytewiseDetector {
+
+        public string DisplayName => "JPG";
+        public string Extension => ".jpg";
 
         // Detected elements
         private List<(long, long)> detections = new List<(long, long)>();
@@ -25,7 +26,7 @@ namespace Peer.Detection {
         // Only some bytes are valid for the first segment
         // Checking it helps reduce false positives
         // The fourth byte has to be one of the following:
-        public static readonly byte[] ValidMarkerBytes = 
+        public static readonly byte[] ValidMarkerBytes =
             { 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, // SOF0, SOF1, SOF2, SOF3, DHT, SOF5, SOF6
             // 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, // RSTn (only exists in entropy-coded data, which we don't care about)
             0xDA, 0xDB, 0xDD, // SOS, DQT, DRI
@@ -37,11 +38,11 @@ namespace Peer.Detection {
         //public static readonly byte[] MagicEnd = { 0xFF, 0xD9 };
 
         public JPGDetector() {
-            
+
         }
 
         public List<(long, long)> Detections() {
-            return this.detections;
+            return this.detections.ToList();
         }
 
         public void Process(byte b) {
@@ -75,17 +76,13 @@ namespace Peer.Detection {
             this.potentialJPGs = new List<PotentialJPG>();
         }
 
-        public string DisplayName() {
-            return "JPG";
-        }
-
         // The first byte of a marker is always 0xFF
         // The second one identifies the marker type and thus how the length is defined
         // The length can be none, fixed or variable
         // None and fixed are returned as a number, variable is returned as null
         public static int? GetMarkerLengthFromByte(byte b) {
             // DRI is always 4
-            if(b == 0xDD) {
+            if (b == 0xDD) {
                 return 4;
             }
             // SOI, EOI and RSTn are 0
@@ -251,9 +248,9 @@ namespace Peer.Detection {
                             return false;
                         }
                     }
-                        
+
                 }
-                
+
                 return true;
             }
         }
