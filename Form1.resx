@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>238, 17</value>
+  </metadata>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>353, 17</value>
+  </metadata>
+  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>493, 17</value>
+  </metadata>
+  <metadata name="pNGDetectorBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>614, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAQEAAAAEAGAAoMgAAFgAAACgAAABAAAAAgAAAAAEAGAAAAAAAKDIAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxNKDhNKDhNKDhNKDhNKDhNKDgYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxNKDhNKDhNKDhNKDhNKDhN
+        KDgYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxNKDhN
+        KDhNKDhNKDhiNUhiNUhvQlVvQlVvQlVvQlUYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhxNKDhNKDhNKDhNKDhiNUhiNUhvQlVvQlVvQlVvQlUYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhxNKDhNKDhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlWEU2iEU2iEU2iE
+        U2iEU2iEU2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxNKDhNKDhiNUhiNUhiNUhiNUhvQlVvQlVvQlVv
+        QlWEU2iEU2iEU2iEU2iEU2iEU2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhiNUhiNUhvQlVv
+        QlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2iEU2iEU2iEU2iEU2gYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhi
+        NUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2iEU2iE
+        U2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhxiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVv
+        QlVvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2iEU2iEU2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVxvQlVv
+        QlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2iEU2iEU2iEU2iEU2gYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVv
+        QlWEU2iEU2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhiNUhiNUhvQlVv
+        QlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVv
+        QlVvQlVvQlVvQlVvQlWEU2iEU2iEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhi
+        NUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUgYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUhiNUhi
+        NUgYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhiNUhi
+        NUhNKDhNKDhiNUhiNUhiNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhi
+        NUhiNUhiNUhiNUhiNUhNKDhNKDhiNUhiNUhiNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVv
+        QlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUhiNUhi
+        NUhiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDiRVm+RVm+RVm+RVm+RVm+RVm9iNUhiNUgYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhi
+        NUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlVvQlVv
+        QlViNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDiRVm+RVm+RVm+RVm+RVm+RVm9iNUhi
+        NUgYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVv
+        QlViNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDiRVm+RVm+RVm+RVm8YFhwYFhwYFhwY
+        FhwoJyooJyqRVm+RVm9iNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVxvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDiRVm+RVm+RVm+R
+        Vm8YFhwYFhwYFhwYFhwoJyooJyqRVm+RVm9iNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlV3SVx3SVx3SVx3
+        SVx3SVx3SVxvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm+RVm+R
+        Vm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyqRVm+RVm9iNUhiNUhiNUhiNUgYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVv
+        QlV3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhNKDhN
+        KDiRVm+RVm+RVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyqRVm+RVm9iNUhiNUhiNUhi
+        NUgYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwY
+        FhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhiNUhi
+        NUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+R
+        Vm9NKDhNKDhiNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlViNUhi
+        NUhiNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyoo
+        JyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVxvQlVv
+        QlViNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwoJyooJyqRVm+RVm9NKDhNKDhiNUhiNUiEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3
+        SVx3SVx3SVxvQlVvQlViNUhiNUhiNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyqRVm+RVm9NKDhNKDhiNUhiNUiEU2iEU2gYFhwYFhwYFhwY
+        FhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhxiNUhiNUhvQlVv
+        QlVvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlViNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhvQlVv
+        QlWEU2iEU2gYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwY
+        FhxiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlViNUhiNUhiNUhiNUhNKDhNKDiRVm+R
+        Vm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhN
+        KDhiNUhiNUhvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlV3SVx3SVxvQlVvQlVvQlVvQlViNUhiNUhNKDhN
+        KDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyqRVm+R
+        Vm9NKDhNKDhiNUhiNUhiNUhiNUhvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlV3SVx3SVxvQlVvQlVvQlVv
+        QlViNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwoJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhiNUhiNUhvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVv
+        QlVvQlVvQlViNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhvQlVvQlVvQlVvQlWEU2iEU2gYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhi
+        NUhvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhvQlVvQlVvQlVv
+        QlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlViNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhiNUhi
+        NUhvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlViNUhiNUhNKDhNKDiRVm+R
+        Vm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+RVm9NKDhN
+        KDhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVvQlVvQlVvQlViNUhi
+        NUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyooJyooJyooJyqRVm+R
+        Vm9NKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwY
+        FhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhvQlVv
+        QlVvQlVvQlViNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyoo
+        JyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVxvQlVvQlWEU2iE
+        U2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwY
+        FhwYFhwYFhxNKDhNKDhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwoJyoo
+        JyooJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlV3SVx3
+        SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhiNUhiNUhNKDhNKDiRVm+RVm8YFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwoJyooJyooJyooJyooJyooJyqRVm+RVm9NKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVv
+        QlVvQlVvQlV3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhNKDhNKDiRVm+RVm8YFhwY
+        FhwYFhwYFhwoJyooJyooJyooJyooJyooJyqRVm+RVm+RVm+RVm9NKDhNKDhiNUhiNUhiNUhiNUhiNUhi
+        NUhiNUhiNUhvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhNKDhN
+        KDiRVm+RVm8YFhwYFhwYFhwYFhwoJyooJyooJyooJyooJyooJyqRVm+RVm+RVm+RVm9NKDhNKDhiNUhi
+        NUhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlV3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlWEU2iEU2gYFhwY
+        FhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhxNKDhNKDiRVm+RVm8oJyooJyooJyooJyooJyooJyqRVm+RVm+RVm+RVm9NKDhNKDhNKDhN
+        KDhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVxvQlVv
+        QlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDiRVm+RVm8oJyooJyooJyooJyooJyooJyqRVm+RVm+RVm+R
+        Vm9NKDhNKDhNKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3
+        SVx3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDiRVm+RVm+RVm+RVm+RVm+R
+        Vm9NKDhNKDhNKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVvQlV3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDiRVm+R
+        Vm+RVm+RVm+RVm+RVm9NKDhNKDhNKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVv
+        QlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhxNKDhNKDhNKDhNKDhNKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVv
+        QlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlWEU2iE
+        U2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhNKDhNKDhNKDhNKDhiNUhiNUhiNUhiNUhiNUhiNUhvQlVv
+        QlVvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVv
+        QlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhNKDhNKDhvQlVvQlVvQlVv
+        QlVvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVxvQlVvQlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxNKDhNKDhNKDhN
+        KDhvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlWEU2iEU2gYFhwYFhwYFhwYFhwYFhwYFhwAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlWEU2iEU2gYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlV3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVxvQlVvQlWEU2iE
+        U2gYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhi
+        NUhvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3SVx3
+        SVxvQlVvQlVvQlVvQlViNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhxiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlV3SVx3SVx3SVx3SVx3SVx3
+        SVx3SVx3SVx3SVx3SVxvQlVvQlVvQlVvQlViNUhiNUgYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhiNUhiNUhvQlVvQlVvQlVvQlVvQlVv
+        QlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUgYFhwYFhwYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhiNUhiNUhvQlVv
+        QlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlVvQlViNUhiNUgYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhxiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhi
+        NUhNKDhNKDhNKDhNKDgYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhiNUhi
+        NUhiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDgYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhxiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDhNKDhNKDgYFhwYFhwYFhwYFhwAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhxiNUhiNUhiNUhiNUhNKDhNKDhNKDhNKDhNKDhNKDgYFhwYFhwYFhwY
+        FhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwYFhwYFhwYFhwYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYFhwY
+        FhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwYFhwA/////////wD/
+        ////////AAP///////8AA////////wAAA///////AAAD//////8AAAAP/////wAAAA//////AAAAAD//
+        //8AAAAAP////wAAAAAD////AAAAAAP///8AAAAAAD///wAAAAAAP///AAAAAAAP//8AAAAAAA///wAA
+        AAAAA///AAAAAAAD//8AAAAAAAD//wAAAAAAAP//AAAAAAAAP/8AAAAAAAA//wAAAAAAAD//AAAAAAAA
+        P//AAAAAAAA//8AAAAAAAD//wAAAAAAAD//AAAAAAAAP/8AAAAAAAA//wAAAAAAAD//AAAAAAAAP/8AA
+        AAAAAA//8AAAAAAAA//wAAAAAAAD//AAAAAAAAP/8AAAAAAAA//8AAAAAAAD//wAAAAAAAP//AAAAAAA
+        AP/8AAAAAAAA//8AAAAAAAD//wAAAAAAAP//wAAAAAAA///AAAAAAAD///AAAAAAAD//8AAAAAAAP//8
+        AAAAAAA///wAAAAAAD///wAAAAAAD///AAAAAAAP///AAAAAAA///8AAAAAAD////AAAAAAD///8AAAA
+        AAP////AAAAAA////8AAAAAD/////AAAAAD////8AAAAAP/////wAAAA//////AAAAD///////8AAP//
+        /////wAA/////////8D/////////wA==
+</value>
+  </data>
+</root>
