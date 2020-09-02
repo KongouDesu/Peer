@@ -47,6 +47,7 @@ namespace Peer
 
             PNGDetector png = new PNGDetector();
             JPGDetector jpg = new JPGDetector();
+            WAVDetector wav = new WAVDetector();
 
             while (remaining > 0) {
                 int read = file.Read(buffer, 0, 4096);
@@ -55,11 +56,12 @@ namespace Peer
                 for (int i = 0; i < read; i++) {
                     png.Process(buffer[i]);
                     jpg.Process(buffer[i]);
+                    wav.Process(buffer[i]);
                     idx++;
                 }
                 Status s = delegate { 
                     Program.form.statusProgressBar.Value = (int)(1000.0 - (double)remaining / file.Length * 1000.0);
-                    Program.form.label1.Text = String.Format("Detections ({0})", jpg.Detections().Count + png.Detections().Count);
+                    Program.form.label1.Text = String.Format("Detections ({0})", jpg.Detections().Count + png.Detections().Count + wav.Detections().Count);
                 };
                 Program.form.Invoke(s);
             }
@@ -82,12 +84,17 @@ namespace Peer
             foreach (var item in jpg.Detections()) {
                 formatted_detections.Add(String.Format("{0} \t {1}", jpg.DisplayName(), format_bytes(item.Item2 - item.Item1)));
             }
+            foreach (var item in wav.Detections()) {
+                formatted_detections.Add(String.Format("{0} \t {1}", wav.DisplayName(), format_bytes(item.Item2 - item.Item1)));
+            }
 
             List<(long, long)> detections = png.Detections();
             detections.AddRange(jpg.Detections());
+            detections.AddRange(wav.Detections());
 
             Console.WriteLine("Found {0} PNGs", png.Detections().Count);
             Console.WriteLine("Found {0} JPGs", jpg.Detections().Count);
+            Console.WriteLine("Found {0} WAVs", wav.Detections().Count);
 
 
             Status dets = delegate {

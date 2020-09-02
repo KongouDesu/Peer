@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Detection\JPGDetector.cs" />
+    <Compile Include="Detection\WAVDetector.cs" />
     <Compile Include="Detection\PNGDetector.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
