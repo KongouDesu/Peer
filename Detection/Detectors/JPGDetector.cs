@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Peer.Detection {
@@ -10,6 +11,10 @@ namespace Peer.Detection {
 
         public string DisplayName => "JPG";
         public string Extension => ".jpg";
+
+        public List<(long, long)> Detections => this.detections;
+
+        public Action<Stream> Display => Detection.Visualizers.ImageVisualizer.Display;
 
         // Detected elements
         private List<(long, long)> detections = new List<(long, long)>();
@@ -41,33 +46,31 @@ namespace Peer.Detection {
 
         }
 
-        public List<(long, long)> Detections() {
-            return this.detections.ToList();
-        }
+        public void ProcessBytes(byte[] bytes) {
+            foreach (byte b in bytes) {
+                // If this byte might be the start of a JPG, add it to potential detections
+                if (b == MagicStart[0]) {
+                    potentialJPGs.Add(new PotentialJPG(this.currentIdx));
+                }
+                // Update all potential detections with the new byte
+                for (int i = potentialJPGs.Count - 1; i >= 0; i--) {
+                    if (!potentialJPGs[i].Process(b))
+                        potentialJPGs.RemoveAt(i);
+                }
 
-        public void Process(byte b) {
-            // If this byte might be the start of a JPG, add it to potential detections
-            if (b == MagicStart[0]) {
-                potentialJPGs.Add(new PotentialJPG(this.currentIdx));
-            }
-            // Update all potential detections with the new byte
-            for (int i = potentialJPGs.Count - 1; i >= 0; i--) {
-                if (!potentialJPGs[i].Process(b))
-                    potentialJPGs.RemoveAt(i);
-            }
+                // Add all successfull ones to output
+                // In order to remove some false-positives, consider the following:
+                // https://stackoverflow.com/questions/2253404/what-is-the-smallest-valid-jpeg-file-size-in-bytes
+                // If the detection is less than 119 bytes, it is very likely a fall positive
+                foreach (var jpg in potentialJPGs) {
+                    if (jpg.done && (currentIdx + 1 - jpg.detectedStartIdx) > 119)
+                        detections.Add((jpg.detectedStartIdx, currentIdx + 1));
+                }
 
-            // Add all successfull ones to output
-            // In order to remove some false-positives, consider the following:
-            // https://stackoverflow.com/questions/2253404/what-is-the-smallest-valid-jpeg-file-size-in-bytes
-            // If the detection is less than 119 bytes, it is very likely a fall positive
-            foreach (var jpg in potentialJPGs) {
-                if (jpg.done && (currentIdx + 1 - jpg.detectedStartIdx) > 119)
-                    detections.Add((jpg.detectedStartIdx, currentIdx + 1));
+                // Remove finished elements
+                potentialJPGs.RemoveAll(elem => elem.done);
+                this.currentIdx++;
             }
-
-            // Remove finished elements
-            potentialJPGs.RemoveAll(elem => elem.done);
-            this.currentIdx++;
         }
 
         public void Reset() {

@@ -11,8 +11,7 @@ namespace Peer {
 
         public static Form1 form;
         public delegate void Status();
-
-        public static int idx = 0;
+        public static DetectionManager detectionManager = new DetectionManager();
 
         /// <summary>
         /// The main entry point for the application.
@@ -21,6 +20,11 @@ namespace Peer {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            detectionManager.RegisterDetector(new JPGDetector());
+            detectionManager.RegisterDetector(new PNGDetector());
+            detectionManager.RegisterDetector(new WAVDetector());
+
             form = new Form1();
             Application.Run(form);
         }
@@ -38,23 +42,15 @@ namespace Peer {
             byte[] buffer = new byte[4096];
             long remaining = file.Length;
 
-            PNGDetector png = new PNGDetector();
-            JPGDetector jpg = new JPGDetector();
-            WAVDetector wav = new WAVDetector();
-
             while (remaining > 0) {
                 int read = file.Read(buffer, 0, 4096);
                 remaining -= read;
 
-                for (int i = 0; i < read; i++) {
-                    png.Process(buffer[i]);
-                    jpg.Process(buffer[i]);
-                    wav.Process(buffer[i]);
-                    idx++;
-                }
+                detectionManager.ProcessBytes(buffer);
+
                 Status s = delegate {
                     Program.form.statusProgressBar.Value = (int)(1000.0 - (double)remaining / file.Length * 1000.0);
-                    Program.form.label1.Text = String.Format("Detections ({0})", jpg.Detections().Count + png.Detections().Count + wav.Detections().Count);
+                    Program.form.label1.Text = String.Format("Detections ({0})", detectionManager.DetectionCount());
                 };
                 Program.form.Invoke(s);
             }
@@ -67,30 +63,21 @@ namespace Peer {
             //    Console.WriteLine("JPG: " + item);
             //}
 
-            List<String> formatted_detections = new List<String>();
-            foreach (var item in png.Detections()) {
-                formatted_detections.Add(String.Format("{0} \t {1}", png.DisplayName, format_bytes(item.Item2 - item.Item1)));
-            }
-            foreach (var item in jpg.Detections()) {
-                formatted_detections.Add(String.Format("{0} \t {1}", jpg.DisplayName, format_bytes(item.Item2 - item.Item1)));
-            }
-            foreach (var item in wav.Detections()) {
-                formatted_detections.Add(String.Format("{0} \t {1}", wav.DisplayName, format_bytes(item.Item2 - item.Item1)));
-            }
+            List<String> formatted_detections = detectionManager.FormatDetections();
 
-            // Start idx, end idx, file extension
-            List<(long, long, string)> detections = new List<(long, long, string)>();
-            detections.AddRange(png.Detections().Select((x) => (x.Item1, x.Item2, png.Extension)));
-            detections.AddRange(jpg.Detections().Select((x) => (x.Item1, x.Item2, jpg.Extension)));
-            detections.AddRange(wav.Detections().Select((x) => (x.Item1, x.Item2, wav.Extension)));
-
-            Console.WriteLine("Found {0} PNGs", png.Detections().Count);
-            Console.WriteLine("Found {0} JPGs", jpg.Detections().Count);
-            Console.WriteLine("Found {0} WAVs", wav.Detections().Count);
-
+            int i = 0;
+            while (true) {
+                try {
+                    if (detectionManager[i].Item2 == null)
+                        break;
+                    Console.WriteLine("{0}", detectionManager[i++]);
+                } catch (Exception _E) {
+                    break;
+                }
+                
+            }
 
             Status dets = delegate {
-                Program.form.listDetections.Tag = detections;
                 Program.form.listDetections.DataSource = formatted_detections;
                 Program.form.menuFileOpen.Enabled = true;
             };

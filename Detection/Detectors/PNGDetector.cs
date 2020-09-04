@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Peer.Detection {
@@ -12,6 +13,10 @@ namespace Peer.Detection {
 
         public string DisplayName => "PNG";
         public string Extension => ".png";
+
+        public Action<Stream> Display => Detection.Visualizers.ImageVisualizer.Display;
+
+        public List<(long, long)> Detections => this.detections;
 
         private List<(long, long)> detections = new List<(long, long)>();
         // Temporary list, tracking sequences that _might_ be a JPG when we get more bytes
@@ -46,34 +51,32 @@ namespace Peer.Detection {
 
         }
 
-        public List<(long, long)> Detections() {
-            return this.detections.ToList();
-        }
+        public void ProcessBytes(byte[] bytes) {
+            foreach (byte b in bytes) {
+                // If this byte might be the start of a PNG, add it to potential detections
+                if (b == MagicStart[0]) {
+                    potentialPNGs.Add(new PotentialPNG(this.currentIdx));
+                }
+                // Update all potential detections with the new byte
+                for (int i = potentialPNGs.Count - 1; i >= 0; i--) {
+                    if (!potentialPNGs[i].Process(b))
+                        potentialPNGs.RemoveAt(i);
+                }
+                //potentialPNGs.RemoveAll(elem => !elem.Process(b));
+                // Add all successfull ones to output
+                foreach (var png in potentialPNGs) {
+                    if (png.done)
+                        detections.Add((png.detectedStartIdx, currentIdx + 1));
+                }
+                // Remove finished elements
+                //potentialPNGs.RemoveAll(elem => elem.done);
+                for (int i = potentialPNGs.Count - 1; i >= 0; i--) {
+                    if (potentialPNGs[i].done)
+                        potentialPNGs.RemoveAt(i);
+                }
 
-        public void Process(byte b) {
-            // If this byte might be the start of a PNG, add it to potential detections
-            if (b == MagicStart[0]) {
-                potentialPNGs.Add(new PotentialPNG(this.currentIdx));
+                this.currentIdx++;
             }
-            // Update all potential detections with the new byte
-            for (int i = potentialPNGs.Count - 1; i >= 0; i--) {
-                if (!potentialPNGs[i].Process(b))
-                    potentialPNGs.RemoveAt(i);
-            }
-            //potentialPNGs.RemoveAll(elem => !elem.Process(b));
-            // Add all successfull ones to output
-            foreach (var png in potentialPNGs) {
-                if (png.done)
-                    detections.Add((png.detectedStartIdx, currentIdx + 1));
-            }
-            // Remove finished elements
-            //potentialPNGs.RemoveAll(elem => elem.done);
-            for (int i = potentialPNGs.Count - 1; i >= 0; i--) {
-                if (potentialPNGs[i].done)
-                    potentialPNGs.RemoveAt(i);
-            }
-
-            this.currentIdx++;
         }
 
         public void Reset() {

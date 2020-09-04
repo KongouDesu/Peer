@@ -61,9 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Detection\JPGDetector.cs" />
-    <Compile Include="Detection\WAVDetector.cs" />
-    <Compile Include="Detection\PNGDetector.cs" />
+    <Compile Include="Detection\DetectionManager.cs" />
+    <Compile Include="Detection\Detectors\JPGDetector.cs" />
+    <Compile Include="Detection\Detectors\WAVDetector.cs" />
+    <Compile Include="Detection\Detectors\PNGDetector.cs" />
+    <Compile Include="Detection\Visualizers\Image.cs" />
+    <Compile Include="Detection\Visualizers\None.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,8 +120,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Peer.Detection {
@@ -14,6 +15,10 @@ namespace Peer.Detection {
         public string DisplayName => "WAV";
         public string Extension => ".wav";
 
+        public Action<Stream> Display => Detection.Visualizers.None.Display;
+
+        public List<(long, long)> Detections => this.detections;
+
         private List<(long, long)> detections = new List<(long, long)>();
         // Temporary list, tracking sequences that _might_ be a WAV when we get more bytes
         private List<PotentialWAV> potentialWAVs = new List<PotentialWAV>();
@@ -27,33 +32,31 @@ namespace Peer.Detection {
 
         }
 
-        public List<(long, long)> Detections() {
-            return this.detections.ToList();
-        }
+        public void ProcessBytes(byte[] bytes) {
+            foreach (byte b in bytes) {
+                // If this byte might be the start of a file, add it to potential detections
+                if (b == MagicRIFF[0]) {
+                    potentialWAVs.Add(new PotentialWAV(this.currentIdx));
+                }
+                // Update all potential detections with the new byte
+                for (int i = potentialWAVs.Count - 1; i >= 0; i--) {
+                    if (!potentialWAVs[i].Process(b))
+                        potentialWAVs.RemoveAt(i);
+                }
 
-        public void Process(byte b) {
-            // If this byte might be the start of a file, add it to potential detections
-            if (b == MagicRIFF[0]) {
-                potentialWAVs.Add(new PotentialWAV(this.currentIdx));
-            }
-            // Update all potential detections with the new byte
-            for (int i = potentialWAVs.Count - 1; i >= 0; i--) {
-                if (!potentialWAVs[i].Process(b))
-                    potentialWAVs.RemoveAt(i);
-            }
+                // Add all successfull ones to output
+                foreach (var wav in potentialWAVs) {
+                    if (wav.done)
+                        detections.Add((wav.detectedStartIdx, wav.endIndex));
+                }
+                // Remove finished elements
+                for (int i = potentialWAVs.Count - 1; i >= 0; i--) {
+                    if (potentialWAVs[i].done)
+                        potentialWAVs.RemoveAt(i);
+                }
 
-            // Add all successfull ones to output
-            foreach (var wav in potentialWAVs) {
-                if (wav.done)
-                    detections.Add((wav.detectedStartIdx, wav.endIndex));
+                this.currentIdx++;
             }
-            // Remove finished elements
-            for (int i = potentialWAVs.Count - 1; i >= 0; i--) {
-                if (potentialWAVs[i].done)
-                    potentialWAVs.RemoveAt(i);
-            }
-
-            this.currentIdx++;
         }
 
         public void Reset() {
