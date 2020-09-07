@@ -100,14 +100,16 @@ namespace Peer.Detection.Detectors {
                 if (b == MagicStart[0]) { // The 'I' in 'ID3'
                     potentialMP3s.Add(new PotentialMP3(this.currentIdx, MP3State.ID3v2));
                 }
-                // TODO: enable this after adding de-duplication
-                // Problem: of course  there is always a valid mp3 inside a valid ID3v2 detection
-                // Thus we'd get two detections for an mp3 with an ID3v2 header: one with and one without the header
-                // We need to add some logic to remove the non-header one if a header version is found
-                // This can be done by checking if two detections end on the same index and only keeping the one that starts earlier
-                //else if (b == 0xFF) {
-                //    potentialMP3s.Add(new PotentialMP3(this.currentIdx, MP3State.Frame));
-                //}
+                // TODO: We *CAN* technically detect MP3's without an ID3v2 header
+                // We just need to search for the first MP3 frame and go until we run out of frames
+                // The problem is that any frame is technically a valid start, so we'll get a lot of duplicates
+                // Plus all frames inside an ID3v2 header would also be detected
+                // To implement this we need to:
+                // 1. Add new potential detection when we see a 0xFF byte
+                // 2. That new detection starts in 'Frame' state
+                // 3. Somehow de-duplicate detections s.t. there is no overlap (remove all but largest)
+
+
                 // Update all potential detections with the new byte
                 for (int i = potentialMP3s.Count - 1; i >= 0; i--) {
                     if (!potentialMP3s[i].Process(b))
@@ -123,9 +125,6 @@ namespace Peer.Detection.Detectors {
                     if (potentialMP3s[i].done)
                         potentialMP3s.RemoveAt(i);
                 }
-
-                //if (currentIdx % 10000 == 0)
-                //    Console.WriteLine(potentialMP3s.Count);
 
                 this.currentIdx++;
             }
@@ -204,11 +203,14 @@ namespace Peer.Detection.Detectors {
                 } else if (progress < 6) { // TODO We can perform extra verification on 'version' and 'flags' here
                     progress++;
                     return true;
-                } else if (progress < 10) {
+                } else if (progress < 9) {
                     lengthBytes[progress - 6] = b;
                     progress++;
                     return true;
                 } else {
+                    lengthBytes[progress - 6] = b;
+                    progress++;
+
                     // Determine length
                     // This is given by the 4 length bytes, where the first bit in each of them is ignored (28 bits)
                     // Note that since ID3v2 is LE, the 'first' bit is bit 7
@@ -237,7 +239,7 @@ namespace Peer.Detection.Detectors {
                     //Console.WriteLine("ID3v2 Tag Length: {0}", len);
                     progress = 0;
                     state = MP3State.Frame;
-                    skip = len-1; // -1 to account for the current byte
+                    skip = len; // -1 to account for the current byte
 
                     return true;
                 } 
