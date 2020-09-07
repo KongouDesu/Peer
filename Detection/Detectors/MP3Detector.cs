@@ -328,13 +328,14 @@ namespace Peer.Detection.Detectors {
                     // Get padding bit
                     // This is either 0 (not padded) or 1 (padded)
                     int paddingBit = (frameBytes[2] & 0b00000010) >> 1;
+                    //Console.WriteLine("Padding: {0}", paddingBit);
 
                     // Compute length
                     int length;
                     if (layer == 0b11) {
-                        length = (12 * bitrate / samplingRate + paddingBit * 8)*4;
+                        length = (12 * bitrate / samplingRate + paddingBit * 4)*4; // 4 byte pad
                     } else {
-                        length = 144 * bitrate / samplingRate + paddingBit * 8;
+                        length = 144 * bitrate / samplingRate + paddingBit; // 1 byte pad
                     }
                     
                     //Console.WriteLine("Computed length: {0}", length);
