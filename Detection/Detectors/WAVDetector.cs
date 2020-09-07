@@ -60,10 +60,11 @@ namespace Peer.Detection {
         }
 
         public void Reset() {
-            Console.WriteLine("WAVDetector reset with  {0} potentials remaining", potentialWAVs.Count);
-            this.currentIdx = 0;
-            potentialWAVs = new List<PotentialWAV>();
+            Detections.Clear();
+            potentialWAVs.Clear();
+            currentIdx = 0;
         }
+        public void FinalizeDetection() { }
     }
 
     class PotentialWAV {

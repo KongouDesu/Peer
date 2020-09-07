@@ -1,4 +1,5 @@
 ﻿using Peer.Detection;
+using Peer.Detection.Detectors;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,7 @@ namespace Peer {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            detectionManager.RegisterDetector(new MP3Detector());
             detectionManager.RegisterDetector(new JPGDetector());
             detectionManager.RegisterDetector(new PNGDetector());
             detectionManager.RegisterDetector(new WAVDetector());
@@ -39,10 +41,12 @@ namespace Peer {
 
     public class LoadThread {
         public static void LoadFile(FileStream file) {
+            detectionManager.Reset();
+
             byte[] buffer = new byte[4096];
             long remaining = file.Length;
 
-            while (remaining > 0) {
+            while (remaining > 4096) {
                 int read = file.Read(buffer, 0, 4096);
                 remaining -= read;
 
@@ -54,6 +58,19 @@ namespace Peer {
                 };
                 Program.form.Invoke(s);
             }
+            // The remainder is 4096 or less
+            // If it's less, we should use a smaller array, otherwise the detectors will be parsing whatever extra data is in the buffer
+            buffer = new byte[remaining];
+            file.Read(buffer, 0, (int)remaining);
+            detectionManager.ProcessBytes(buffer);
+            Status s2 = delegate {
+                Program.form.statusProgressBar.Value = (int)(1000.0 - (double)remaining / file.Length * 1000.0);
+                Program.form.label1.Text = String.Format("Detections ({0})", detectionManager.DetectionCount());
+            };
+            Program.form.Invoke(s2);
+
+            // Finalize processing
+            detectionManager.FinalizeStream();
 
             Console.WriteLine("Done reading");
             file.Close();

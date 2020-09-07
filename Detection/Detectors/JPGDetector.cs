@@ -73,12 +73,6 @@ namespace Peer.Detection {
             }
         }
 
-        public void Reset() {
-            Console.WriteLine("JPGDetector reset with  {0} potentials remaining", potentialJPGs.Count);
-            this.currentIdx = 0;
-            this.potentialJPGs = new List<PotentialJPG>();
-        }
-
         // The first byte of a marker is always 0xFF
         // The second one identifies the marker type and thus how the length is defined
         // The length can be none, fixed or variable
@@ -95,6 +89,14 @@ namespace Peer.Detection {
             // All others are variable
             return null;
         }
+
+        public void Reset() {
+            Detections.Clear();
+            potentialJPGs.Clear();
+            currentIdx = 0;
+        }
+
+        public void FinalizeDetection() { }
     }
 
     // When we've found the 'magic start' we have to find a valid end segment

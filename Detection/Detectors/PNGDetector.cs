@@ -16,9 +16,8 @@ namespace Peer.Detection {
 
         public Action<Stream> Display => Detection.Visualizers.ImageVisualizer.Display;
 
-        public List<(long, long)> Detections => this.detections;
+        public List<(long, long)> Detections { get; } = new List<(long, long)>();
 
-        private List<(long, long)> detections = new List<(long, long)>();
         // Temporary list, tracking sequences that _might_ be a JPG when we get more bytes
         private List<PotentialPNG> potentialPNGs = new List<PotentialPNG>();
         private int currentIdx = 0;
@@ -66,7 +65,7 @@ namespace Peer.Detection {
                 // Add all successfull ones to output
                 foreach (var png in potentialPNGs) {
                     if (png.done)
-                        detections.Add((png.detectedStartIdx, currentIdx + 1));
+                        Detections.Add((png.detectedStartIdx, currentIdx + 1));
                 }
                 // Remove finished elements
                 //potentialPNGs.RemoveAll(elem => elem.done);
@@ -80,10 +79,12 @@ namespace Peer.Detection {
         }
 
         public void Reset() {
-            Console.WriteLine("PNGDetector reset with  {0} potentials remaining", potentialPNGs.Count);
-            this.currentIdx = 0;
-            potentialPNGs = new List<PotentialPNG>();
+            Detections.Clear();
+            potentialPNGs.Clear();
+            currentIdx = 0;
         }
+
+        public void FinalizeDetection() {}
     }
 
     class PotentialPNG {

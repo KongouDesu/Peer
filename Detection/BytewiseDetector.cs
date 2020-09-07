@@ -11,7 +11,14 @@ namespace Peer {
         void ProcessBytes(byte[] bytes);
 
         /// <summary>
-        /// Called to indicate that the stream has changed and all state should be reset
+        /// Called to indicate that the input stream is done
+        /// In some cases, we can only find out where a file ends by adding it when the stream ends, if it appears valid at that point
+        /// </summary>
+        void FinalizeDetection();
+
+        /// <summary>
+        /// Reset all internal state
+        /// Useful when we want to reuse the same detectors on a new stream
         /// </summary>
         void Reset();
 

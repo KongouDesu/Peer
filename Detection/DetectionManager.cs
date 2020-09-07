@@ -37,6 +37,25 @@ namespace Peer.Detection {
         }
 
         /// <summary>
+        /// Called to inform all detectors that the stream is done
+        /// This is required for some detectors to work correctly
+        /// </summary>
+        public void FinalizeStream() {
+            foreach (var det in this.detectors) {
+                det.FinalizeDetection();
+            }
+        }
+
+        /// <summary>
+        /// Tells all detectors to reset state in anticipation for a new stream
+        /// </summary>
+        public void Reset() {
+            foreach (var det in this.detectors) {
+                det.Reset();
+            }
+        }
+
+        /// <summary>
         /// Convert current detections into a human-readable list
         /// An entry foramt is "DisplayName \t Size" where 
         /// 'DisplayName' is what the BytewiseDetector defines it as
@@ -53,6 +72,8 @@ namespace Peer.Detection {
         }
 
 
+        // Override indexing to access detections
+        // The index here is 1:1 with the output from 'FormatDetections()'
         public ((long, long), BytewiseDetector) this[int key] {
             get {
                 foreach (var det in this.detectors) {
