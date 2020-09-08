@@ -10,6 +10,7 @@ namespace Peer.Detection.Detectors {
     /// <summary>
     /// A detector that can find MP3 files
     /// First detects an ID3v2 tag, then keeps looking for MP3 frames till it runs out
+    /// TODO Implement detection of files without ID3v2 tag
     /// </summary>
     class MP3Detector : BytewiseDetector {
 

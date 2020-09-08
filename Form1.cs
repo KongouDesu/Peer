@@ -29,8 +29,8 @@ namespace Peer {
                 }
 
                 Console.WriteLine("Length: " + file.Length);
-                if (file.Length > 1000 * 1000 * 1000) {
-                    Console.WriteLine("Confirming file open for large file (1GB+)");
+                if (file.Length > 500 * 1000 * 1000) {
+                    Console.WriteLine("Confirming file open for large file (500MB+)");
                     DialogResult dialogResult = MessageBox.Show(
                         String.Format("The file you are opening is very large file ({0}).\nProcessing it may take a while.\nContinue?", Program.format_bytes(file.Length)),
                         "File Size Warning", MessageBoxButtons.YesNo);

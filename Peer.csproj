@@ -64,6 +64,7 @@
     <Compile Include="Detection\DetectionManager.cs" />
     <Compile Include="Detection\Detectors\JPGDetector.cs" />
     <Compile Include="Detection\Detectors\MP3Detector.cs" />
+    <Compile Include="Detection\Detectors\OggDetector.cs" />
     <Compile Include="Detection\Detectors\WAVDetector.cs" />
     <Compile Include="Detection\Detectors\PNGDetector.cs" />
     <Compile Include="Detection\Visualizers\Image.cs" />

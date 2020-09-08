@@ -26,6 +26,7 @@ namespace Peer {
             detectionManager.RegisterDetector(new JPGDetector());
             detectionManager.RegisterDetector(new PNGDetector());
             detectionManager.RegisterDetector(new WAVDetector());
+            detectionManager.RegisterDetector(new OggDetector());
 
             form = new Form1();
             Application.Run(form);
@@ -63,14 +64,17 @@ namespace Peer {
             buffer = new byte[remaining];
             file.Read(buffer, 0, (int)remaining);
             detectionManager.ProcessBytes(buffer);
+            // Finalize processing
+            detectionManager.FinalizeStream();
+
             Status s2 = delegate {
-                Program.form.statusProgressBar.Value = (int)(1000.0 - (double)remaining / file.Length * 1000.0);
+                Program.form.statusProgressBar.Value = Program.form.statusProgressBar.Maximum;
                 Program.form.label1.Text = String.Format("Detections ({0})", detectionManager.DetectionCount());
             };
             Program.form.Invoke(s2);
 
-            // Finalize processing
-            detectionManager.FinalizeStream();
+            
+            
 
             Console.WriteLine("Done reading");
             file.Close();
